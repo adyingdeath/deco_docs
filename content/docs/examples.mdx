@@ -1,0 +1,72 @@
+---
+title: Examples
+description: Practical examples of Deco usage
+---
+
+# Deco Examples
+
+## Block Placement Event
+
+This example demonstrates how to handle block placement events:
+
+```deco
+@onPlaceBlock("minecraft:black_wool")
+func onBlackWool {
+    tellraw @a [{"selector":"@s"},{"text":" just placed a black wool."}]
+    raycast("@s", "minecraft:black_wool", 0.01, 10, "setblock ~ ~ ~ iron_block")
+}
+
+@onPlaceBlock("minecraft:sand")
+func onSand {
+    tellraw @a [{"selector":"@s"},{"text":" just placed a sand."}]
+    raycast("@s", "minecraft:sand", 0.01, 10, "setblock ~ ~ ~ gold_block")
+}
+```
+
+## Load and Tick Functions
+
+Examples of load and tick functions:
+
+```deco
+@load
+func init {
+    tellraw @a {"text":"Datapack loaded!"}
+}
+
+@tick
+func main {
+    execute as @a[scores={timer=1..}] run {
+        scoreboard players remove @s timer 1
+    }
+}
+```
+
+## Function Tags
+
+Example of using function tags:
+
+```deco
+@tag("deco:core")
+func coreFunction {
+    # Core functionality here
+}
+
+@tag("deco:utils")
+func utilityFunction {
+    # Utility functions here
+}
+```
+
+## Raycast Usage
+
+Example of using the raycast function:
+
+```deco
+@onPlaceBlock("minecraft:stone")
+func onStone {
+    raycast("@s", "minecraft:stone", 0.01, 10, """
+        setblock ~ ~ ~ minecraft:gold_block
+        particle minecraft:end_rod ~ ~ ~ 0.1 0.1 0.1 0.1 1
+    """)
+}
+``` 

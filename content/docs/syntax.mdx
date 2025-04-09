@@ -1,0 +1,64 @@
+---
+title: Syntax Guide
+description: Deco syntax and core functions documentation
+---
+
+# Deco Syntax
+
+## Project Structure
+
+The file structure of a Deco project is the same as the original datapack structure. To start using Deco, create a `.deco` file in the functions folder:
+
+```
+example/
+├── pack.mcmeta
+└── data/
+    └── <namespace>/
+        └── functions/
+            └── <filename>.deco
+```
+
+## Event Binding
+
+Deco supports various event bindings:
+
+```deco
+@load
+func xxx {
+    xxx
+}
+
+@tick
+func xxx {
+    xxx
+}
+
+@tag("deco:core")
+func xxx {
+    xxx
+}
+
+@onPlaceBlock("minecraft:black_wool")
+func onBlackWool {
+    tellraw @a [{"selector":"@s"},{"text":" just placed a black wool."}]
+    raycast("@s", "minecraft:black_wool", 0.01, 10, "setblock ~ ~ ~ iron_block")
+}
+```
+
+## Core Functions
+
+### raycast
+
+**Syntax**: `raycast(shooter, block, step, distance, callback)`
+
+Parameters:
+- **`shooter`**: Origin of the ray (selector or player name)
+- **`block`**: Target block(s) to detect (block ID or tag)
+- **`step`**: Ray precision (e.g., 0.1)
+- **`distance`**: Maximum ray length in blocks
+- **`callback`**: Command(s) to execute upon hitting target
+
+Example:
+```deco
+raycast("@s", "minecraft:stone", 0.01, 10, "setblock ~ ~ ~ minecraft:gold_block")
+``` 
