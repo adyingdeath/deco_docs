@@ -8,20 +8,36 @@ The decorated function will be called when a player places a block.
 
 ## Parameters
 
-import { TypeTable } from 'fumadocs-ui/components/type-table';
- 
-<TypeTable
-  type={{
-    block: {
-      description: "The block you want to detect.",
-      type: "String",
-      default: "-",
-    },
-  }}
-/>
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Parameter</TableHead>
+      <TableHead>Description</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>block</TableCell>
+      <TableCell>The block you want to detect.</TableCell>
+      <TableCell>String</TableCell>
+      <TableCell>-</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
 
 - The `@s` is the player who placed the block.
-- The `execution position` is **NOT** the position of the block that the player placed, but the position of the player.
+- The `execution position` is **NOT** the position of the block that the player placed, but the position of the player. It's because currently we haven't figured out stable way to get the position of the block that the player placed.
 
 ## Example
 

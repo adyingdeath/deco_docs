@@ -1,5 +1,5 @@
 ---
-title: Raycast
+title: raycast
 ---
 
 This function sends out a ray from a specified origin to detect target blocks within a given distance.
@@ -25,7 +25,7 @@ import {
 <Table>
   <TableHeader>
     <TableRow>
-      <TableHead className="w-[100px]">Parameter</TableHead>
+      <TableHead>Parameter</TableHead>
       <TableHead>Description</TableHead>
       <TableHead>Type</TableHead>
       <TableHead>Default</TableHead>
@@ -33,31 +33,31 @@ import {
   </TableHeader>
   <TableBody>
     <TableRow>
-      <TableCell className="font-medium">shooter</TableCell>
+      <TableCell>shooter</TableCell>
       <TableCell>The origin of the ray. Accepts selectors like @a, @s, or a player's name.</TableCell>
       <TableCell>String</TableCell>
       <TableCell>-</TableCell>
     </TableRow>
     <TableRow>
-      <TableCell className="font-medium">block</TableCell>
+      <TableCell>block</TableCell>
       <TableCell>The target block(s) to detect. Can be a block ID (e.g., 'minecraft:stone') or a block tag.</TableCell>
       <TableCell>String</TableCell>
       <TableCell>-</TableCell>
     </TableRow>
     <TableRow>
-      <TableCell className="font-medium">step</TableCell>
+      <TableCell>step</TableCell>
       <TableCell>Controls the ray's precision (smaller values provide finer detection).</TableCell>
       <TableCell>Number</TableCell>
       <TableCell>-</TableCell>
     </TableRow>
     <TableRow>
-      <TableCell className="font-medium">distance</TableCell>
+      <TableCell>distance</TableCell>
       <TableCell>Maximum ray length in blocks.</TableCell>
       <TableCell>Number</TableCell>
       <TableCell>-</TableCell>
     </TableRow>
     <TableRow>
-      <TableCell className="font-medium">callback</TableCell>
+      <TableCell>callback</TableCell>
       <TableCell>Minecraft command(s) to execute upon hitting the target block(s).</TableCell>
       <TableCell>String</TableCell>
       <TableCell>-</TableCell>
