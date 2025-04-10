@@ -1,23 +1,29 @@
 ---
-title: Deco - Minecraft Datapack Language
-description: A newly designed language specifically for creating Minecraft datapacks
+title: API Reference
+description: Comprehensive documentation of Deco's API for Minecraft datapack development
 ---
 
-# Deco
+Welcome to the Deco API Reference documentation. This section provides detailed explanations of all APIs in the Deco language, helping you fully leverage Deco for Minecraft datapack development.
 
-Deco is a newly designed language specifically for creating Minecraft datapacks. It follows a progressive design philosophy, meaning that original Minecraft datapacks and mcfunction files are valid Deco code, allowing you to gradually incorporate Deco syntax to leverage its power.
+## API Overview
 
-## Key Features
+Deco's API is divided into these main categories:
 
-- Fully compatible with vanilla datapacks
-- Support for tick, load, and function tags
-- Block placement event binding
-- Clean syntax for improved development efficiency
+- **Event System** - For responding to various in-game events such as block placement, entity spawning, etc.
+- **Function Utilities** - Utility functions that simplify common tasks
 
-## Quick Start
+## Quick Navigation
 
 <Cards>
-  <Card title="Getting Started" href="/docs/getting-started" description="Installation and basic usage guide" />
-  <Card title="Syntax Guide" href="/docs/syntax" description="Learn Deco syntax and core functions" />
-  <Card title="Examples" href="/docs/examples" description="View example code and usage" />
+  <Card title="Event System" href="/docs/api/event" description="Explore Deco's event binding APIs like onPlaceBlock" />
+  <Card title="Function Utilities" href="/docs/api/function" description="Learn about Deco's utility function toolkit" />
 </Cards>
+
+## Design Philosophy
+
+Deco's API follows these design principles:
+
+- **Progressive Adoption** - Fully compatible with vanilla datapacks, allowing gradual introduction of Deco features
+- **Clean Syntax** - Provides concise, readable syntax that reduces code redundancy
+- **Performance First** - API design considers Minecraft's performance characteristics
+- **Easily Extensible** - Flexible structure allowing for customization and extension
