@@ -1,5 +1,5 @@
 {
     "title": "Docs",
     "root": true,
-    "pages": ["index", "getting-started", "syntax", "examples"]
+    "pages": ["index", "---Quick Start---", "installation", "getting-started", "syntax", "examples"]
 }

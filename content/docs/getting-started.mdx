@@ -1,70 +1,26 @@
 ---
 title: Getting Started
-description: Installation and basic usage guide for Deco
+description: Getting started with Deco
 ---
 
-# Getting Started with Deco
+## Create a Project
 
-## Installation
+What is special about Deco is that it uses exactly the same folder structure as vanilla Minecraft datapacks.
 
-1. Download the latest version of the `deco.jar` file from [here](https://github.com/adyingdeath/deco/releases/)
-2. Place the file in your preferred directory
+So, you can just copy any of your existing datapacks and use Deco on them. Or create a new one if you want to.
 
-## Basic Usage
+Now, we got a folder structure like this:
 
-Basic command format:
-
-```bash
-java -jar deco.jar <your_datapack_folder>
+```
+<datapack>/
+├── pack.mcmeta
+└── data/
+    └── <namespace>/
+        └── functions/
+            ├── <filename>.mcfunction
+            └── <filename>.deco
 ```
 
-Specify an output directory:
+`.mcfunction` files are still valid in Deco, so if you have a `.mcfunction` in your datapack and don't want to use any Deco features in it, you can just leave it as is.
 
-```bash
-java -jar deco.jar -o <output_folder> <your_datapack_folder>
-```
-
-## Registering as System Command
-
-### Windows
-
-1. Create a file named `deco.bat` with the following content:
-
-```batch
-@echo off
-java -jar C:\path\to\deco.jar %*
-```
-
-2. Save this file to a directory in your system PATH
-3. Now you can use the `deco` command directly:
-
-```bash
-deco <your_datapack_folder>
-```
-
-### macOS/Linux
-
-1. Create a file named `deco` with the following content:
-
-```bash
-#!/bin/bash
-java -jar /path/to/deco.jar "$@"
-```
-
-2. Add execution permissions:
-
-```bash
-chmod +x /path/to/deco
-```
-
-3. Move to a directory in your PATH:
-
-```bash
-sudo mv /path/to/deco /usr/local/bin/
-```
-
-4. Now you can use the `deco` command directly:
-
-```bash
-deco <your_datapack_folder>
-``` 
+Then, create a `.deco` file in the `functions` folder and start DECOrating!

@@ -1,0 +1,94 @@
+---
+title: Installation
+description: Installation and basic usage guide for Deco
+---
+
+## Download
+
+1. Download the latest version of the `deco.jar` file from [here](https://github.com/adyingdeath/deco/releases/)
+2. Place the file in your preferred directory
+3. Make sure you have **Java 17 or higher** installed, if you don't have it, check how to in [FAQ](#faq) below
+
+## Basic Usage
+
+Basic command format:
+
+```bash
+java -jar deco.jar <your_datapack_folder>
+```
+
+Specify an output directory:
+
+```bash
+java -jar deco.jar -o <output_folder> <your_datapack_folder>
+```
+
+Note: You should replace `deco.jar` with the path to the `deco.jar` file. Like if you put it in `D:\deco\deco.jar`, you should use:
+
+```bash
+java -jar "D:\deco\deco.jar" <your_datapack_folder>
+```
+
+## FAQ
+
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+
+<Accordions type="single">
+{/* How to install Java? */}
+<Accordion title="How to install Java?">
+If you don't have Java installed, you can download it from [here](https://jdk.java.net/archive/). Find the version you need and download it. I recommend using `17.0.2`.
+
+It's a zip file, so you need to unzip it. Then, add the `bin` folder to your PATH.
+
+If you don't know how to do it, you can ask Google or AI.
+</Accordion>
+{/* Registering as System Command */}
+<Accordion title="How can I avoid using java -jar everytime?">
+You can register the `deco.jar` file as a system command so you can use the `deco` command directly. The following are the steps for different operating systems:
+<Tabs items={['Windows', 'macOS/Linux']}>
+  <Tab value="Windows">
+    1. Create a file named `deco.bat` with the following content:
+
+    ```batch
+    @echo off
+    java -jar C:\path\to\deco.jar %*
+    ```
+    **Note: Replace `C:\path\to\deco.jar` with the path to the `deco.jar` file**
+
+    2. Save this file to a directory in your system PATH
+    3. Now you can use the `deco` command directly:
+
+    ```bash
+    deco <your_datapack_folder>
+    ```
+  </Tab>
+  <Tab value="macOS/Linux">
+    1. Create a file named `deco` with the following content:
+
+    ```bash
+    #!/bin/bash
+    java -jar /path/to/deco.jar "$@"
+    ```
+
+    2. Add execution permissions:
+
+    ```bash
+    chmod +x /path/to/deco
+    ```
+
+    3. Move to a directory in your PATH:
+
+    ```bash
+    sudo mv /path/to/deco /usr/local/bin/
+    ```
+
+    4. Now you can use the `deco` command directly:
+
+    ```bash
+    deco <your_datapack_folder>
+    ```
+  </Tab>
+</Tabs>
+</Accordion>
+</Accordions> 
