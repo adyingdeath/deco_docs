@@ -1,3 +1,9 @@
 {
-    "title": "Deco API"
+    "title": "API Reference",
+    "root": true,
+    "pages": [
+        "index",
+        "---API---",
+        "event"
+    ]
 }

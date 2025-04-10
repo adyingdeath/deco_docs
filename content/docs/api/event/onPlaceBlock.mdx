@@ -1,0 +1,42 @@
+---
+title: onPlaceBlock
+---
+
+This is a function decorator.
+
+The decorated function will be called when a player places a block.
+
+## Parameters
+
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+ 
+<TypeTable
+  type={{
+    block: {
+      description: "The block you want to detect.",
+      type: "String",
+      default: "-",
+    },
+  }}
+/>
+
+- The `@s` is the player who placed the block.
+- The `execution position` is **NOT** the position of the block that the player placed, but the position of the player.
+
+## Example
+
+```
+@onPlaceBlock("minecraft:stone")
+func onPlaceBlock {
+    tellraw @s [{"selector":"@s"},{"text":" placed a stone block."}]
+}
+```
+
+Use with `raycast`(see [raycast](/docs/api/function/raycast)) to detect the block that the player just placed. (It's not promised to be the exact block that the player placed)
+
+```
+@onPlaceBlock("minecraft:stone")
+func onPlaceBlock {
+    raycast("@s", "minecraft:stone", 0.01, 10, "setblock ~ ~ ~ gold_block")
+}
+```

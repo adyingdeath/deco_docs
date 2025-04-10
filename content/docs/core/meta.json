@@ -1,5 +1,5 @@
 {
-    "title": "Docs",
+    "title": "Deco Docs",
     "root": true,
     "pages": [
         "index",
@@ -7,8 +7,6 @@
         "installation",
         "getting-started",
         "syntax",
-        "examples",
-        "---API---",
-        "api"
+        "examples"
     ]
 }
