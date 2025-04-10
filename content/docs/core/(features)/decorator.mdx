@@ -1,0 +1,133 @@
+---
+title: Decorator
+---
+
+Decorators in Deco are special annotations that provide additional functionality to functions. They are marked with the `@` symbol and placed before function definitions. Decorators allow you to bind functions to specific Minecraft events or tags, simplifying datapack development.
+
+## Using Decorators
+
+The basic syntax for a decorator is:
+
+```
+@decoratorName(arguments)
+func functionName {
+    // function code
+}
+```
+
+Where:
+- `@decoratorName`: The name of the decorator, starting with `@`
+- `(arguments)`: Optional parameters, some decorators require arguments
+- `func functionName { ... }`: The decorated function
+
+For example, the following code uses the `@load` decorator to mark a function that will execute when the datapack is loaded:
+
+```
+@load
+func initialize {
+    tellraw @a {"text":"Datapack loaded!","color":"green"}
+}
+```
+
+### Multiple Decorators
+
+A single function can have multiple decorators applied to it by listing them before the function definition:
+
+```
+@load
+@tag("custom:init")
+func setupGame {
+    scoreboard objectives add health health
+    scoreboard objectives setdisplay sidebar health
+}
+```
+
+This function will run both when the datapack is loaded and when you run `function #custom:init`.
+
+### Decorator Arguments
+
+Some decorators need arguments to specify their behavior. Arguments are provided in parentheses after the decorator name:
+
+```
+@tag("minecraft:load")
+func onLoad {
+    say Datapack loaded!
+}
+```
+
+```
+@onPlaceBlock("minecraft:redstone_block")
+func powerOn {
+    say Power activated!
+}
+```
+
+## How Decorators Work
+
+During compilation, Deco automatically generates the necessary function tag files and event handling code based on the decorators:
+
+- `@load` and `@tick` decorators add your functions to Minecraft's built-in `minecraft:load` and `minecraft:tick` tags
+- `@tag` adds your function to the specified custom tag
+- `@onPlaceBlock` creates an advanced detection system using advancements and functions to detect when specific blocks are placed
+- ...
+
+This automatic generation saves you from having to manually create these structures, making your datapack development more efficient and your code more readable.
+
+## Available Decorators
+
+Deco currently supports the following decorators:
+
+### @load
+
+The `@load` decorator registers a function to run when the datapack is loaded.
+
+```
+@load
+func initialize {
+    tellraw @a {"text":"Datapack loaded!","color":"green"}
+    scoreboard objectives add myScore dummy
+}
+```
+
+After compilation, this function will be automatically added to the `minecraft:load` function tag, causing it to run whenever the datapack is loaded.
+
+### @tick
+
+The `@tick` decorator registers a function to run every game tick.
+
+```
+@tick
+func update {
+    execute as @a at @s run particle minecraft:end_rod ~ ~1 ~ 0.2 0.2 0.2 0 1
+}
+```
+
+After compilation, this function will be automatically added to the `minecraft:tick` function tag, causing it to run every game tick.
+
+### @tag
+
+The `@tag` decorator allows you to add a function to a specific function tag.
+
+```
+@tag("custom:example")
+func myTaggedFunction {
+    say This function is in a custom tag!
+}
+```
+
+After compilation, this function will be added to the specified function tag, in this case `custom:example`.
+
+### @onPlaceBlock
+
+The `@onPlaceBlock` decorator binds a function to the event of a player placing a specific block.
+
+```
+@onPlaceBlock("minecraft:diamond_block")
+func onDiamondPlaced {
+    tellraw @a [{"selector":"@s"},{"text":" placed a diamond block!"}]
+    give @s minecraft:diamond 1
+}
+```
+
+When a player places a diamond block, the function will be triggered, displaying a message to all players and giving a diamond to the player who placed the block.
+
