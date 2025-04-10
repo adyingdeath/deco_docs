@@ -23,4 +23,32 @@ Now, we got a folder structure like this:
 
 `.mcfunction` files are still valid in Deco, so if you have a `.mcfunction` in your datapack and don't want to use any Deco features in it, you can just leave it as is.
 
-Then, create a `.deco` file in the `functions` folder and start DECOrating!
+Then, create a `.deco` file in the `functions` folder and start your Deco journey!
+
+## First Deco File
+
+Let's create a simple Deco file called `gold_touch.deco` and put it in the `functions` folder:
+
+```
+<datapack>/
+└── data/
+    └── <namespace>/
+        └── functions/
+            └── gold_touch.deco
+```
+
+Now, let's write some Deco code in the `gold_touch.deco` file:
+
+```
+@onPlaceBlock("minecraft:stone")
+func gold_touch() {
+    tellraw @s [{"selector":"@s"},{"text":", it is your gold touch!"}]
+    raycast("@s", "minecraft:stone", 0.01, 10, "setblock ~ ~ ~ gold_block")
+}
+```
+
+
+
+
+
+
