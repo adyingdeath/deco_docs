@@ -1,5 +1,14 @@
 {
     "title": "Docs",
     "root": true,
-    "pages": ["index", "---Quick Start---", "installation", "getting-started", "syntax", "examples"]
+    "pages": [
+        "index",
+        "---Quick Start---",
+        "installation",
+        "getting-started",
+        "syntax",
+        "examples",
+        "---API---",
+        "api"
+    ]
 }

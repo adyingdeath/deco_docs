@@ -30,7 +30,7 @@ Then, create a `.deco` file in the `functions` folder and start your Deco journe
 Let's create a simple Deco file called `gold_touch.deco` and put it in the `functions` folder:
 
 ```
-<datapack>/
+gold_touch_src/
 └── data/
     └── <namespace>/
         └── functions/
@@ -47,8 +47,23 @@ func gold_touch() {
 }
 ```
 
+The function of this Deco file is:
 
+1. When a player places a stone block, the player will be notified that they have the gold touch.
+2. Then, the stone block will be replaced with a gold block, by using the `raycast` command.
 
+## Compile
 
+Let's compile the Deco project. Change the directory to the folder where you put the `gold_touch_src` folder and run the following command:
 
+```
+deco -o gold_touch gold_touch_src
+```
 
+This will compile the Deco project(`gold_touch_src`) and create a `gold_touch` folder in the current directory. You can see some `.mcfunction` files and advancements files in the `gold_touch` folder, which are the compiled result of the `gold_touch_src` project.
+
+Now, you can use the `gold_touch` datapack in your game. Just put the `gold_touch` folder in your `datapacks` folder and experiment with it!
+
+## More Info
+
+If you want to know more about Deco, you can check the [API Reference](/docs/api).
