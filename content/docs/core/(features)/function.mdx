@@ -1,0 +1,92 @@
+---
+title: Function
+---
+
+You can use keyword `func` to define a function in `.deco` file.
+
+## Function Definition
+
+The function you define in `.deco` file will be saved as a `.mcfunction` file in the same folder of your `.deco` file.
+
+For example, if you have a `.deco` file in `functions/core/test.deco` and the content of the file is:
+
+```
+func helloworld {
+    say Hello, world!
+}
+```
+
+After compiling, Deco will generate a `helloworld.mcfunction` file in the same folder of your `test.deco` file: `functions/core/helloworld.mcfunction`.
+
+**Note:** Since Minecraft only supports lowercase function names, Deco will convert the function name to lowercase. You can still use uppercase function names in your `.deco` file for better readability, but remember it will be converted to lowercase after compiling.
+
+## Implicit Functions
+
+Since Deco is designed to be compatible with vanilla datapack, codes that are directly written in `.deco` file without `func` keyword will still be treated as a deco function as well.
+
+For example, if you have a `.deco` file in `functions/core/test.deco` and the content of the file is:
+
+```
+say Hello, world!
+```
+
+After compiling, Deco will generate a `test.mcfunction` file in the same folder of your `test.deco` file: `functions/core/test.mcfunction`, containing the code you wrote:
+
+```
+say Hello, world!
+```
+
+If there are mixed codes in your `.deco` file, Deco will treat them as implicit functions.
+
+## Mixed Functions
+
+If your `.deco` file contains both directly written code and code wrapped in `func` blocks, Deco will generate multiple `.mcfunction` files. The code outside of any `func` blocks will be compiled into a `.mcfunction` file named after the `.deco` file, while each `func` block will generate its own `.mcfunction` file named after the function.
+
+For example, if you have a `.deco` file in `functions/core/test.deco` with the following content:
+
+```
+say This is outside of any function
+
+func helloworld {
+    say Hello, world!
+}
+
+func goodbye {
+    say Goodbye!
+}
+
+say This is another command
+```
+
+After compiling, Deco will generate three `.mcfunction` files:
+
+```
+functions/
+└── core/
+    ├── test.mcfunction
+    ├── helloworld.mcfunction
+    └── goodbye.mcfunction
+```
+
+Each file will contain the code from the corresponding section of the `.deco` file:
+
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+ 
+<Tabs items={['test.mcfunction', 'helloworld.mcfunction', 'goodbye.mcfunction']}>
+  <Tab value="test.mcfunction">
+    ```
+    say This is outside of any function
+    say This is another command
+    ```
+  </Tab>
+  <Tab value="helloworld.mcfunction">
+    ```
+    say Hello, world!
+    ```
+  </Tab>
+  <Tab value="goodbye.mcfunction">
+    ```
+    say Goodbye!
+    ```
+  </Tab>
+</Tabs>

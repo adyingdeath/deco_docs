@@ -6,7 +6,10 @@
         "---Quick Start---",
         "installation",
         "getting-started",
-        "syntax",
+        "---Syntax and Features---",
+        "(features)/function",
+        "(features)/features",
+        "------",
         "examples"
     ]
 }
