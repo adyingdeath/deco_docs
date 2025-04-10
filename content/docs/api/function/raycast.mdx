@@ -1,0 +1,95 @@
+---
+title: Raycast
+---
+
+This function sends out a ray from a specified origin to detect target blocks within a given distance.
+
+## Syntax
+
+```
+raycast(shooter, block, step, distance, callback)
+```
+
+## Parameters
+
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead className="w-[100px]">Parameter</TableHead>
+      <TableHead>Description</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell className="font-medium">shooter</TableCell>
+      <TableCell>The origin of the ray. Accepts selectors like @a, @s, or a player's name.</TableCell>
+      <TableCell>String</TableCell>
+      <TableCell>-</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="font-medium">block</TableCell>
+      <TableCell>The target block(s) to detect. Can be a block ID (e.g., 'minecraft:stone') or a block tag.</TableCell>
+      <TableCell>String</TableCell>
+      <TableCell>-</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="font-medium">step</TableCell>
+      <TableCell>Controls the ray's precision (smaller values provide finer detection).</TableCell>
+      <TableCell>Number</TableCell>
+      <TableCell>-</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="font-medium">distance</TableCell>
+      <TableCell>Maximum ray length in blocks.</TableCell>
+      <TableCell>Number</TableCell>
+      <TableCell>-</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="font-medium">callback</TableCell>
+      <TableCell>Minecraft command(s) to execute upon hitting the target block(s).</TableCell>
+      <TableCell>String</TableCell>
+      <TableCell>-</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Example
+
+```
+raycast("@s", "minecraft:stone", 0.01, 10, "setblock ~ ~ ~ minecraft:gold_block")
+```
+
+This example sends a ray from the executing player to detect stone blocks within 10 blocks distance. When a stone block is detected, it's replaced with a gold block.
+
+## Usage with onPlaceBlock
+
+The raycast function is commonly used with `@onPlaceBlock` to detect and modify blocks that players have just placed:
+
+```
+@onPlaceBlock("minecraft:black_wool")
+func onBlackWool {
+    tellraw @a [{"selector":"@s"},{"text":" just placed a black wool."}]
+    raycast("@s", "minecraft:black_wool", 0.01, 10, "setblock ~ ~ ~ iron_block")
+}
+
+@onPlaceBlock("minecraft:sand")
+func onSand {
+    tellraw @a [{"selector":"@s"},{"text":" just placed a sand."}]
+    raycast("@s", "minecraft:sand", 0.01, 10, "setblock ~ ~ ~ gold_block")
+}
+```
+
+In these examples, when a player places black wool or sand, the raycast function finds that block and transforms it into iron or gold.
+

@@ -4,6 +4,7 @@
     "pages": [
         "index",
         "---API---",
-        "event"
+        "event",
+        "function"
     ]
 }
