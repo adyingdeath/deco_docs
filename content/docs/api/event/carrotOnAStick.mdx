@@ -1,0 +1,35 @@
+---
+title: carrotOnAStick
+---
+
+This is a function decorator.
+
+The decorated function will be called when a player right-clicks with a carrot on a stick.
+
+## Parameters
+
+This decorator doesn't take any parameters.
+
+- The `@s` is the player who right-clicked with the carrot on a stick.
+- The `execution position` is the position of the player.
+
+## Example
+
+```
+@carrotOnAStick
+func onCarrot {
+    tellraw @s [{"selector":"@s"},{"text":" right-clicked with a carrot on a stick."}]
+}
+```
+
+Use with `raycast`(see [raycast](/docs/api/function/raycast)) to perform actions at the location the player is looking at:
+
+```
+@carrotOnAStick
+func onCarrot {
+    say Someone just right-clicked with a carrot on a stick.
+    raycast("@s", "minecraft:sand", 0.01, 100, "summon minecraft:tnt ~ ~ ~")
+}
+```
+
+Summon a TNT at the location the player is looking at when they right-click with a carrot on a stick.
