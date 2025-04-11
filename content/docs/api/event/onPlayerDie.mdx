@@ -1,0 +1,36 @@
+---
+title: onPlayerDie
+---
+
+This is a function decorator.
+
+The decorated function will be called when a player dies for any reason.
+
+## Parameters
+
+This decorator doesn't take any parameters.
+
+- The `@s` is the player who died.
+- The `execution position` is the position of the player at the time of death.
+
+## Example
+
+```
+@onPlayerDie
+func onPlayerDie {
+    tellraw @a [{"selector":"@s"},{"text":" has died. Rest in peace."}]
+}
+```
+
+You can use this to create custom death messages or effects:
+
+```
+@onPlayerDie
+func onPlayerDie {
+    # Create a lightning strike at the death location
+    summon lightning_bolt ~ ~ ~
+    
+    # Send a custom message to all players
+    tellraw @a [{"selector":"@s","color":"red"},{"text":" has fallen in battle!","color":"gold"}]
+}
+```
