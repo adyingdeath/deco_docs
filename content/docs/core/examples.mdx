@@ -28,6 +28,7 @@ func onSand {
 Examples of load and tick functions:
 
 ```deco
+// deco:load_and_tick.deco
 @load
 func init {
     tellraw @a {"text":"Datapack loaded!"}
@@ -35,9 +36,11 @@ func init {
 
 @tick
 func main {
-    execute as @a[scores={timer=1..}] run {
-        scoreboard players remove @s timer 1
-    }
+    execute as @a[scores={timer=1..}] run function deco:execute
+}
+
+func execute {
+    scoreboard players set @s timer 0
 }
 ```
 
@@ -62,11 +65,14 @@ func utilityFunction {
 Example of using the raycast function:
 
 ```deco
+// deco:core/turn_stone_to_gold.deco
 @onPlaceBlock("minecraft:stone")
 func onStone {
-    raycast("@s", "minecraft:stone", 0.01, 10, """
-        setblock ~ ~ ~ minecraft:gold_block
-        particle minecraft:end_rod ~ ~ ~ 0.1 0.1 0.1 0.1 1
-    """)
+    raycast("@s", "minecraft:stone", 0.01, 10, "function deco:core/afterstone")
+}
+
+func afterStone {
+    setblock ~ ~ ~ minecraft:gold_block
+    particle minecraft:end_rod ~ ~ ~ 0.1 0.1 0.1 0.1 1
 }
 ``` 
