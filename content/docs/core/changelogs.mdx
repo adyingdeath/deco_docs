@@ -1,0 +1,55 @@
+---
+title: Changelogs
+---
+
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from "@/components/ui/table"
+
+<Table>
+    <TableHeader>
+        <TableRow>
+            <TableHead>Version</TableHead>
+            <TableHead>Changes</TableHead>
+            <TableHead>Date</TableHead>
+            <TableHead>Notes</TableHead>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        <TableRow>
+            <TableCell>v1.0.0-alpha.3</TableCell>
+            <TableCell>
+                Added event `onPlayerDie`, `carrotOnAStick`
+            </TableCell>
+            <TableCell>2025-04-11</TableCell>
+            <TableCell>
+                [download](https://github.com/adyingdeath/deco/releases/tag/v1.0.0-alpha.3)
+            </TableCell>
+        </TableRow>
+        <TableRow>
+            <TableCell>v1.0.0-alpha.2</TableCell>
+            <TableCell>
+                Add `raycast(shooter, block, step, distance, callback)` function.
+            </TableCell>
+            <TableCell>2025-04-2</TableCell>
+            <TableCell>
+                [download](https://github.com/adyingdeath/deco/releases/tag/v1.0.0-alpha.2)
+            </TableCell>
+        </TableRow>
+        <TableRow>
+            <TableCell>v1.0.0-alpha</TableCell>
+            <TableCell>
+            Contains several basic functionalities:
+                - Easily tag functions using `@load`, `@tick`, and `@tag(function_tag)` decorators
+                - Conveniently bind block placement events to functions with `@onPlaceBlock("{block_code}")`, like `@onPlaceBlock("minecraft:stone")`
+            </TableCell>
+            <TableCell>2025-03-28</TableCell>
+            <TableCell>Initial release, [download](https://github.com/adyingdeath/deco/releases/tag/v1.0.0-alpha)</TableCell>
+        </TableRow>
+    </TableBody>
+</Table>
